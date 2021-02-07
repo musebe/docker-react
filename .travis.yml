@@ -8,3 +8,21 @@ before_install:
 
 script:
   - docker run -e CI=true musebe/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "react"
+  env: "React-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-225808216331"
+  bucket_path: "react"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
+
+    
+
+
+
